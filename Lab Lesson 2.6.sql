@@ -45,10 +45,11 @@ HAVING AVG(length)>120;
 #8.
 SELECT title, length,
   CASE 
-    WHEN length>150 THEN 'Super Long Movie'
-    WHEN length BETWEEN 150 and 110 THEN 'Long Movie'
-    WHEN length BETWEEN 60 AND 110 THEN 'Standard Movie' 
+    WHEN length>=150 THEN 'Super Long Movie'
+    WHEN length BETWEEN 150 AND 110 THEN 'Long Movie'
+    WHEN length BETWEEN 60 AND 109 THEN 'Standard Movie' 
     ELSE 'Short Movie'
   END AS 'Duration Rank'
   FROM sakila.film
+  WHERE length IS NOT NULL AND length != 0
   ORDER BY length ASC;
