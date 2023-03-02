@@ -8,16 +8,18 @@ WHERE first_name = 'Scarlett';
 # 2. How many films (movies) are available for rent and how many films have been rented?
 SELECT COUNT(return_date) FROM sakila.rental;
 SELECT return_date FROM sakila.rental;
+SELECT COUNT(DISTINCT title) from sakila.film;
 # 16044 total entries. 15861 entries (meaning they are rented out). The difference is the actual number of films returned, therefore available for renting 
 # 16044-15861 = 183
 
 # 3. What are the shortest and longest movie duration? Name the values max_duration and min_duration. 
 SELECT * FROM sakila.film;
-SELECT MAX(length) AS 'max_duration', MIN(length) AS min_duration FROM sakila.film; #185
+SELECT MAX(length) AS 'Longest Movie', MIN(length) AS 'Shortest Movie' FROM sakila.film; #185
 
 # 4. What's the average movie duration expressed in format (hours, minutes)?
 SELECT AVG(length)
 FROM sakila.film; #115 which is 1 hour and 55 minutes
+SELECT sec_to_time(AVG(length)*60) FROM sakila.film;  #tks Erin
 
 # 5. How many distinct (different) actors' last names are there?
 SELECT COUNT(DISTINCT last_name) FROM sakila.actor;
@@ -35,7 +37,7 @@ LIMIT 20;
 #8. Add an additional column day_type with values 'weekend' and 'workday' depending on the rental day of the week.
 SELECT *,
   CASE 
-    WHEN DAYOFWEEK(rental_date) IN (1, 7) THEN 'Weekend'
+    WHEN DAYOFWEEK(rental_date) IN (5, 6) THEN 'Weekend'
     ELSE 'Workday'
   END AS 'day of the week rented'
   FROM sakila.rental;
