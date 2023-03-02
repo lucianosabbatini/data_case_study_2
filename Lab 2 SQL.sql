@@ -6,8 +6,7 @@ FROM actor
 WHERE first_name = 'Scarlett';
 
 # 2. How many films (movies) are available for rent and how many films have been rented?
-SELECT COUNT(return_date) FROM sakila.rental;
-SELECT return_date FROM sakila.rental;
+
 SELECT COUNT(DISTINCT title) from sakila.film;
 # 16044 total entries. 15861 entries (meaning they are rented out). The difference is the actual number of films returned, therefore available for renting 
 # 16044-15861 = 183
