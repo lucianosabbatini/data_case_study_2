@@ -49,7 +49,7 @@ SELECT title, length,
     WHEN length BETWEEN 150 AND 110 THEN 'Long Movie'
     WHEN length BETWEEN 60 AND 109 THEN 'Standard Movie' 
     ELSE 'Short Movie'
-  END AS 'Duration Rank'
+  END AS 'Length Rank'
   FROM sakila.film
   WHERE length IS NOT NULL AND length != 0
   ORDER BY length ASC;
