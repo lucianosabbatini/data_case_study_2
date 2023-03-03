@@ -8,13 +8,14 @@ SELECT category_id, COUNT(fc.film_id)
 FROM film f
 JOIN film_category fc
 USING (film_id)
-GROUP BY category_id;
+GROUP BY category_id
+ORDER BY COUNT(fc.film_id) DESC ;
 
 #2. 
 SELECT * FROM payment;
 SELECT * FROM staff;
 
-SELECT s.staff_id, COUNT(s.staff_id), SUM(p.amount)
+SELECT s.staff_id, CONCAT(s.first_name, ' ', s.last_name), SUM(p.amount) as Sum
 FROM sakila.payment p
 JOIN sakila.staff s
 USING (staff_id)
@@ -25,17 +26,12 @@ GROUP BY s.staff_id;
 SELECT * FROM film;
 SELECT * FROM film_actor;
 
-SELECT f.film_id
-FROM film f
-JOIN film_actor fa
-USING (film_id);
-GROUP BY film_id;
-
 SELECT film_actor.actor_id,count(film_actor.film_id) as film_count
 from film_actor
 join film
 on film.film_id=film_actor.film_id
-group by film_actor.actor_id;
+group by film_actor.actor_id
+ORDER BY count(film_actor.film_id) DESC;
 
 #4.
 SELECT * FROM customer;
