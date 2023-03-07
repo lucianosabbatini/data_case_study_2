@@ -53,6 +53,10 @@ JOIN (
     WHERE film_category.category_id = family_category.category_id
 );
 
+# Alternatively, we can use the G -- "General Audience - All Ages Admitted":  to get a broader selection.
+select title from film
+where rating = 'g';
+
 #5.Get name and email from customers from Canada using subqueries. Do the same with joins. Note that to create a join, you will have to identify 
 # the correct tables with their primary keys and foreign keys, that will help you get the relevant information.
 SELECT * from customer;
